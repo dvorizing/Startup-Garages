@@ -1,0 +1,52 @@
+﻿@model AbirProjectCars.ViewModel.Garages
+
+<h2>Edit Garage</h2>
+
+@using (Html.BeginForm("Update", "Garage", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(m => m.GarageID)
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.GarageName)
+        @Html.TextBoxFor(m => m.GarageName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.GarageName)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.PhoneNumber)
+        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.PhoneNumber)
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Address)
+        @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Address)
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Register</button>
+}
+
+@*<form asp-action="Update" asp-controller="Garage" method="post">
+        <div class="form-group">
+            <input asp-for="GarageID" type="hidden" />
+        </div>
+        <div class="form-group">
+            <label asp-for="GarageName"></label>
+            <input asp-for="GarageName" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Address"></label>
+            <input asp-for="Address" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="PhoneNumber"></label>
+            <input asp-for="PhoneNumber" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>*@
+

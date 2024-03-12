@@ -1,0 +1,17 @@
+﻿@model AbirProjectCars.Models.GarageVisits
+
+<h2>Delete GarageVisit</h2>
+<p>Are you sure you want to delete this Visit?</p>
+@*<form asp-action="Delete">
+        <input type="hidden" asp-for="VisitID" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>*@
+@using (Html.BeginForm("Delete", "GarageVisit", FormMethod.Post))
+{
+@Html.ValidationSummary(true)
+
+                <input type="hidden" asp-for="VisitID" />
+
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                                                <a asp-action="Index" class="btn btn-secondary">Cancel</a>}

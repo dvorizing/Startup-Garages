@@ -1,0 +1,76 @@
+﻿<a href="@Url.Action("AddGarage", "Garage",new { id =ViewBag.UserId})">New Garage</a>
+<h2>All your Garages</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>GarageId</th>
+            <th>GarageName</th>
+            <th>Address</th>
+            <th>PhoneNumber</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var garage in Model)
+        {
+            if (garage.getCanView())
+            {
+                <tr>
+
+                    <td>@garage.GarageID</td>
+                    <td>@garage.GarageName</td>
+                    <td>@garage.Address</td>
+                    <td>@garage.PhoneNumber</td>
+                    @if (garage.getCanEdit())
+                    {
+                        <td>       <a href="@Url.Action("Update", "Garage",new { id =garage.GarageID,UserId=ViewBag.UserId})">Update</a></td>
+                        <td>
+                            <a href="@Url.Action("GetVisites", "GarageVisit",new { id = @garage.GarageID})">Visit Garege Managment</a>
+
+                        </td>
+                    }
+                    else
+                    {
+                        <td><p>You cant edit deatails, contact an administrator</p></td>
+                    }
+                </tr>
+
+            }
+            else
+            {
+                <p>You are a blocked user, contact an administrator</p>
+            }
+        }
+    </tbody>
+</table>
+
+
+<div>
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+
+            @if (ViewBag.LoopStartPage > 1)
+            {
+                <li class="page-item ">
+                    <a href="@Url.Action("GetMyGarages", "Garage",new { page = @ViewBag.PageIndex-1, IsMooveP=true})">prev</a>
+                </li>
+            }
+            @for (int page1 = ViewBag.LoopStartPage; page1 <= ViewBag.LoopEndPage; page1++)
+            {
+                <li class="page-item ">
+                    <a href="@Url.Action("GetMyGarages", "Garage",new { page = @page1})">@page1</a>
+
+                </li>
+            }
+
+            @if (ViewBag.LoopEndPage < ViewBag.TotaPages)
+            {
+                <li class="page-item ">
+                    <a href="@Url.Action("GetMyGarages", "Garage",new { page = @ViewBag.PageIndex+1, IsMooveN=true})">next</a>
+
+                </li>
+            }
+
+        </ul>
+    </nav>
+</div>

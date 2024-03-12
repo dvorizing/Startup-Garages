@@ -1,0 +1,82 @@
+﻿@model AbirProjectCars.ViewModel.Permission
+
+<h2>Add Permission</h2>
+@*<form asp-action="AddPermission" asp-controller="Permission" method="post">
+
+        <div class="form-group">
+            <input asp-for="PermissionID" type="hidden" />
+        </div>
+        <div class="form-group">
+            <input asp-for="UserID" type="hidden" />
+        </div>
+        <div class="form-group">
+            <input asp-for="CustomerID" type="hidden" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="CanView"></label>
+            <input asp-for="CanView" />
+            <input type="checkbox" class="form-control" id="canEditCheckbox" />
+            <input type="hidden" id="canEditHidden" name="CanView" value="false" />
+        </div>
+        <div class="form-group">
+            <label asp-for="CanEdit"></label>
+            <input asp-for="CanEdit" />
+            <input type="checkbox" class="form-control" id="canEditCheckbox" />
+            <input type="hidden" id="canEditHidden" name="CanEdit" value="false" />
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>*@
+@using (Html.BeginForm("AddPermission", "Permission", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(m => m.UserID)
+    @Html.HiddenFor(m => m.CustomerID)
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.CanView)
+        @Html.TextBoxFor(m => m.CanView, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CanView)
+
+    </div>
+      <div class="form-group">
+        @Html.LabelFor(m => m.CanEdit)
+        @Html.TextBoxFor(m => m.CanEdit, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CanEdit)
+
+      </div>
+
+                    @*<div class="form-group">
+                            <label asp-for="CanView"></label>
+                            <input asp-for="CanView" />
+                            <input type="checkbox" asp-for="CanView" class="form-control" id="canViewCheckbox" />
+                            <input type="hidden" asp-for="CanView" />
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="CanEdit"></label>
+                            <input asp-for="CanEdit" />
+                            <input type="checkbox" asp-for="CanEdit" class="form-control" id="canEditCheckbox" />
+                            <input type="hidden" asp-for="CanEdit" />
+                        </div>*@
+
+                    @*<div class="form-group">
+                            <label asp-for="CanView"></label>
+                            <input asp-for="CanView" />
+                            <input type="checkbox" class="form-control" id="canEditCheckbox" />
+                            <input type="hidden" id="canEditHidden" name="CanView" value="false" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="CanEdit"></label>
+                            <input asp-for="CanEdit" />
+                            <input type="checkbox" class="form-control" id="canEditCheckbox" />
+                            <input type="hidden" id="canEditHidden" name="CanEdit" value="false" />
+
+
+                        </div>*@
+
+                    <button type="submit" class="btn btn-primary">Register</button>
+                }

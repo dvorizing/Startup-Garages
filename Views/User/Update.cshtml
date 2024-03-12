@@ -1,0 +1,24 @@
+﻿@model AbirProjectCars.Models.Users
+@using (Html.BeginForm("Update", "User", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(m => m.UserID)
+    <div class="form-group">
+        @Html.LabelFor(m => m.Username)
+        @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Username)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password)
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Password)
+
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Register</button>
+}
+
+

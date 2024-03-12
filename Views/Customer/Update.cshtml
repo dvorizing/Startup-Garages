@@ -1,0 +1,66 @@
+﻿@model AbirProjectCars.ViewModel.Customer
+<h2>Edit Customer</h2>
+
+@using (Html.BeginForm("Update", "Customer", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(m => m.CustomerID)
+    @Html.HiddenFor(m => m.aaaa)
+    @Html.HiddenFor(m => m.aaaa)
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.FirstName)
+        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.FirstName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.LastName)
+        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.LastName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Email)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Phone)
+        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Phone)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Address)
+        @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Address)
+    </div>
+
+    <button type="submit" class="btn btn-primary">שמירה</button>
+}
+
+@*<form asp-action="Update" asp-controller="Customer" method="post">
+        <div class="form-group">
+            <input asp-for="CustomerID" type="hidden" />
+        </div>
+        <div class="form-group">
+            <label asp-for="FirstName"></label>
+            <input asp-for="FirstName" class="form-control" />
+            </div>
+        <div class="form-group">
+            <label asp-for="LastName"></label>
+            <input asp-for="LastName" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Phone"></label>
+            <input asp-for="Phone" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Address"></label>
+            <input asp-for="Address" class="form-control" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>*@

@@ -1,0 +1,51 @@
+﻿
+<h1>                        Home Page    </h1>
+<h3>Please Enter your Name and password</h3>
+@model AbirProjectCars.Models.Users
+
+@using (Html.BeginForm("Login", "Home", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+<script src="https://unpkg.com/speech-recognition@3.3.0/dist/speech-recognition.js"></script>
+<div class="form-group">
+    <button type="button" onclick="speakText()">Speak Text</button>
+    @Html.LabelFor(m => m.Username)
+    @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Username)
+
+
+    <script>
+        function speakText() {
+            var speechTextBox = document.getElementById('speechTextBox');
+
+            if ('speechSynthesis' in window) {
+                var synth = window.speechSynthesis;
+
+                // Cancel any previous speech
+                synth.cancel();
+
+                // Create a new SpeechSynthesisUtterance
+                var utterance = new SpeechSynthesisUtterance(speechTextBox.value);
+
+                // Speak the text
+                synth.speak(utterance);
+            } else {
+                // Web Speech API is not supported
+                alert('Web Speech API is not supported in this browser.');
+            }
+        }
+    </script>
+</div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password)
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Password)
+        @*@Html.LabelFor(m => m.Password)
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Password)*@
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Register</button>
+}

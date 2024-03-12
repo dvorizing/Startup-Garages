@@ -1,0 +1,10 @@
+﻿@model AbirProjectCars.ViewModel.Customer
+
+<h2> Hello @Model.FirstName  @Model.LastName  Welcome back</h2>
+
+<h3>Click to enter</h3>
+<a href="@Url.Action("UpdateMe", "Customer",new { id = @Model.CustomerID })">עדכון פרטים אישיים</a>
+<br />
+<a href="@Url.Action("GetVehicles", "Vehicle",new { id = @Model.CustomerID })">ניהול רכבים</a>
+<br />
+

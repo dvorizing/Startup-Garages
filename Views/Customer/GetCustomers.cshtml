@@ -1,0 +1,64 @@
+﻿
+<h2>All customers</h2>
+<a href="@Url.Action("AddCustomer", "Customer",new { id =ViewBag.UserId})">New Customer</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>CustomerId</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Actions</th>
+           
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.CustomerID</td>
+                <td>@customer.FirstName</td>
+                <td>@customer.LastName</td>
+                <td>@customer.Email</td>
+                <td>@customer.Phone</td>
+                <td>@customer.Address</td>
+                <td>
+                    <a href="@Url.Action("Update", "Customer",new { id = customer.CustomerID,UserId=ViewBag.UserId})">Edit</a>
+                    <a href="@Url.Action("Delete", "Customer",new { id = customer.CustomerID ,UserId=ViewBag.UserId})">Delete</a>
+                    @*<a href="@Url.Action("GetVehicles", "Vehicle",new { id = customer.CustomerID })">צפייה ברכבים של לקוח</a>*@
+
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+
+            @if (ViewBag.LoopStartPage > 1)
+            {
+                <li class="page-item ">
+                    <a href="@Url.Action("GetCustomers", "Customer",new { page = @ViewBag.PageIndex-1, IsMooveP=true})">prev</a>
+                </li>
+            }
+            @for (int page1 = ViewBag.LoopStartPage; page1 <= ViewBag.LoopEndPage; page1++)
+            {
+                <li class="page-item ">
+                    <a href="@Url.Action("GetCustomers", "Customer",new { page = @page1 })">@page1</a>
+                </li>
+            }
+
+            @if (ViewBag.LoopEndPage < ViewBag.TotaPages)
+            {
+                <li class="page-item ">
+                    <a href="@Url.Action("GetCustomers", "Customer",new { page = @ViewBag.PageIndex+1, IsMooveN=true})">next</a>
+
+                </li>
+            }
+
+        </ul>
+    </nav>
+</div>

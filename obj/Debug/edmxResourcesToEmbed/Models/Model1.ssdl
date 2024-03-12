@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MVC_Abir_GarageDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="Phone" Type="varchar" MaxLength="15" />
+    <Property Name="Address" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Garage">
+    <Key>
+      <PropertyRef Name="GarageID" />
+    </Key>
+    <Property Name="GarageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GarageName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="200" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="GaragePermissions">
+    <Key>
+      <PropertyRef Name="PermissionID" />
+    </Key>
+    <Property Name="PermissionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="GarageID" Type="int" />
+    <Property Name="CanView" Type="bit" />
+    <Property Name="CanEdit" Type="bit" />
+  </EntityType>
+  <EntityType Name="GarageVisits">
+    <Key>
+      <PropertyRef Name="VisitID" />
+    </Key>
+    <Property Name="VisitID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VehicleID" Type="int" />
+    <Property Name="GarageID" Type="int" />
+    <Property Name="VisitDate" Type="date" />
+    <Property Name="OilVolume" Type="varchar" MaxLength="200" />
+    <Property Name="OilType" Type="varchar" MaxLength="200" />
+    <Property Name="TiresairCuttingAbrasive" Type="varchar" MaxLength="200" />
+    <Property Name="TiresairTireChange" Type="varchar" MaxLength="200" />
+    <Property Name="BrakingFluidLevel" Type="varchar" MaxLength="200" />
+    <Property Name="BrakingBrakeWork" Type="varchar" MaxLength="200" />
+    <Property Name="BatteryFluidLevel" Type="varchar" MaxLength="200" />
+    <Property Name="BatteryConnections" Type="varchar" MaxLength="200" />
+    <Property Name="ElectricaLlightBulbs" Type="varchar" MaxLength="200" />
+    <Property Name="ElectricalSwitches" Type="varchar" MaxLength="200" />
+    <Property Name="ElectricalConnections" Type="varchar" MaxLength="200" />
+    <Property Name="CoolingCoolant" Type="varchar" MaxLength="200" />
+    <Property Name="CoolingConnections" Type="varchar" MaxLength="200" />
+    <Property Name="BracesFluidLevel" Type="varchar" MaxLength="200" />
+    <Property Name="BracesConnections" Type="varchar" MaxLength="200" />
+    <Property Name="ReplacementOilFilter" Type="varchar" MaxLength="200" />
+    <Property Name="ReplacementAirFilter" Type="varchar" MaxLength="200" />
+    <Property Name="ReplacementFuelFilter" Type="varchar" MaxLength="200" />
+    <Property Name="TreatmentNote" Type="varchar" MaxLength="200" />
+    <Property Name="Signiture" Type="varchar" MaxLength="200" />
+    <Property Name="DateReport" Type="date" />
+    <Property Name="TotalCost" Type="decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="Permissions">
+    <Key>
+      <PropertyRef Name="PermissionID" />
+    </Key>
+    <Property Name="PermissionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="CustomerID" Type="int" />
+    <Property Name="CanView" Type="bit" />
+    <Property Name="CanEdit" Type="bit" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vehicles">
+    <Key>
+      <PropertyRef Name="VehicleID" />
+    </Key>
+    <Property Name="VehicleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Make" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Model" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Year" Type="int" />
+    <Property Name="VIN" Type="varchar" MaxLength="17" />
+    <Property Name="Mileage" Type="int" />
+    <Property Name="LastServiceDate" Type="date" />
+    <Property Name="OwnerID" Type="int" />
+  </EntityType>
+  <Association Name="FK__GaragePer__Garag__37A5467C">
+    <End Role="Garage" Type="Self.Garage" Multiplicity="0..1" />
+    <End Role="GaragePermissions" Type="Self.GaragePermissions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Garage">
+        <PropertyRef Name="GarageID" />
+      </Principal>
+      <Dependent Role="GaragePermissions">
+        <PropertyRef Name="GarageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GaragePer__UserI__36B12243">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="GaragePermissions" Type="Self.GaragePermissions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="GaragePermissions">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GarageVis__Garag__33D4B598">
+    <End Role="Garage" Type="Self.Garage" Multiplicity="0..1" />
+    <End Role="GarageVisits" Type="Self.GarageVisits" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Garage">
+        <PropertyRef Name="GarageID" />
+      </Principal>
+      <Dependent Role="GarageVisits">
+        <PropertyRef Name="GarageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GarageVis__Vehic__32E0915F">
+    <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="0..1" />
+    <End Role="GarageVisits" Type="Self.GarageVisits" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicles">
+        <PropertyRef Name="VehicleID" />
+      </Principal>
+      <Dependent Role="GarageVisits">
+        <PropertyRef Name="VehicleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Permissio__Custo__2A4B4B5E">
+    <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+    <End Role="Permissions" Type="Self.Permissions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="Permissions">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Permissio__UserI__29572725">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Permissions" Type="Self.Permissions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Permissions">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vehicles__OwnerI__2E1BDC42">
+    <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+    <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="Vehicles">
+        <PropertyRef Name="OwnerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MVC_Abir_GarageDBModelStoreContainer">
+    <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Garage" EntityType="Self.Garage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GaragePermissions" EntityType="Self.GaragePermissions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GarageVisits" EntityType="Self.GarageVisits" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Permissions" EntityType="Self.Permissions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vehicles" EntityType="Self.Vehicles" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__GaragePer__Garag__37A5467C" Association="Self.FK__GaragePer__Garag__37A5467C">
+      <End Role="Garage" EntitySet="Garage" />
+      <End Role="GaragePermissions" EntitySet="GaragePermissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GaragePer__UserI__36B12243" Association="Self.FK__GaragePer__UserI__36B12243">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="GaragePermissions" EntitySet="GaragePermissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GarageVis__Garag__33D4B598" Association="Self.FK__GarageVis__Garag__33D4B598">
+      <End Role="Garage" EntitySet="Garage" />
+      <End Role="GarageVisits" EntitySet="GarageVisits" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GarageVis__Vehic__32E0915F" Association="Self.FK__GarageVis__Vehic__32E0915F">
+      <End Role="Vehicles" EntitySet="Vehicles" />
+      <End Role="GarageVisits" EntitySet="GarageVisits" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Permissio__Custo__2A4B4B5E" Association="Self.FK__Permissio__Custo__2A4B4B5E">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Permissions" EntitySet="Permissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Permissio__UserI__29572725" Association="Self.FK__Permissio__UserI__29572725">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Permissions" EntitySet="Permissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vehicles__OwnerI__2E1BDC42" Association="Self.FK__Vehicles__OwnerI__2E1BDC42">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Vehicles" EntitySet="Vehicles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

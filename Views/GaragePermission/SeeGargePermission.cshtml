@@ -1,0 +1,71 @@
+﻿
+<h2>All GaragePermission</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>PermissionId</th>
+            <th>UserId</th>
+            <th>GarageId</th>
+            <th>CanView</th>
+            <th>CanEdit</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var per in Model)
+        {
+            <tr>
+                <td>@per.PermissionID</td>
+                <td>@per.UserID</td>
+                <td>@per.GarageID</td>
+                <td>@per.CanView</td>
+                <td>@per.CanEdit</td>
+                <td>
+                    <a href="@Url.Action("Update", "GaragePermission",new { id = @per.PermissionID})">Edit</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@*<div>
+
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+
+                @for (int page1 = 1; page1 <= ViewBag.TotaPages; page1++)
+                {
+                        <li class="page-item ">
+                            <a class="page-link" asp-action="GetUsers" asp-route-page="@(page1)">@page1</a>
+                        </li>
+                }
+
+            </ul>
+        </nav>
+    </div>*@
+@*<div>
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+
+            @if (ViewBag.LoopStartPage > 1)
+            {
+                            <li class="page-item ">
+                    <a class="page-link" asp-action="SeeGargePermission" asp-route-page="@(ViewBag.PageIndex-1)" asp-route-IsMooveP="@(true)"> prev </a>
+                            </li>
+            }
+            @for (int page1 = ViewBag.LoopStartPage; page1 <= ViewBag.LoopEndPage; page1++)
+            {
+                            <li class="page-item ">
+                    <a class="page-link" asp-action="SeeGargePermission" asp-route-page="@(page1)">@page1</a>
+                            </li>
+            }
+
+            @if (ViewBag.LoopEndPage < ViewBag.TotaPages)
+            {
+                            <li class="page-item ">
+                    <a class="page-link" asp-action="SeeGargePermission" asp-route-page="@(ViewBag.PageIndex+1)" asp-route-IsMooveN="@(true)"> next  </a>
+                            </li>
+            }
+
+            </ul>
+        </nav>
+    </div>*@

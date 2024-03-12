@@ -1,0 +1,14 @@
+﻿@model AbirProjectCars.Models.Customers
+<h2>Delete Customer</h2>
+<p>Are you sure you want to delete this Customer?</p>
+
+@*<a class="btn btn-danger" href="@Url.Action("DeleteTotal", "Customer", new { id = @ViewBag.id, UserId = @ViewBag.UserId })">Delete</a>*@
+<a class="btn btn-danger" href="@Url.Action("DeleteTotal", "Customer",new { id = @ViewBag.id ,UserId=ViewBag.UserId})">Delete</a>
+
+@*@using (Html.BeginForm("DeleteTotal", "Customer", FormMethod.Post, new { id = @ViewBag.id, UserID = @ViewBag.UserID }))
+    {
+    @Html.ValidationSummary(true) <input type="hidden" asp-for="UserI" asp-route-UserId="@(ViewBag.UserID)"/>
+                        <input type="hidden" asp-for="id" asp-route-id="@(ViewBag.id)"/>
+
+                    <button type="submit" class="btn btn-danger">Delete</button>*@
+<a asp-action="Index" class="btn btn-secondary">Cancel</a>

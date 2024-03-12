@@ -1,0 +1,72 @@
+﻿
+<h2>All Vehicle</h2>
+<a href="@Url.Action("AddVehicle", "Vehicle",new { id =@ViewBag.OwnerId })">חדש</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>VehicleId</th>
+            <th>Make</th>
+            <th>Model</th>
+            <th>Year</th>
+            <th>Vin</th>
+            <th>Make</th>
+            <th>Mileage</th>
+            <th>LastServiceDate</th>
+            <th>OwnerId</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var vehicle in Model)
+        {
+            <tr>
+                {
+                <td>@vehicle.VehicleID</td>
+                <td>@vehicle.Make</td>
+                <td>@vehicle.Model</td>
+                <td>@vehicle.Year</td>
+                <td>@vehicle.VIN</td>
+                <td>@vehicle.Make</td>
+                <td>@vehicle.Mileage</td>
+                <td>@vehicle.LastServiceDate</td>
+                <td>@vehicle.OwnerID</td>
+                }
+                <td>
+                    <a href="@Url.Action("Update", "Vehicle",new { id = @vehicle.VehicleID})">Edit</a>
+                    <a href="@Url.Action("Delete", "Vehicle",new { id = @vehicle.VehicleID})">Delete</a>
+                    <a href="@Url.Action("GetMyVisites", "GarageVisit",new { id = @vehicle.VehicleID})">צפייה בביקורות </a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+
+            @if (ViewBag.LoopStartPage > 1)
+            {
+                <li class="page-item ">
+                    <a href="@Url.Action("GetVehicles", "Vehicle", new { page = @ViewBag.PageIndex-1, IsMooveP = true })">prev</a>
+                </li>
+            }
+            @for (int page1 = ViewBag.LoopStartPage; page1 <= ViewBag.LoopEndPage; page1++)
+            {
+                <li class="page-item ">
+                    <a href="@Url.Action("GetVehicles", "Vehicle", new { page = page1})">@page1</a>
+
+                </li>
+            }
+
+            @if (ViewBag.LoopEndPage < ViewBag.TotaPages)
+            {
+                <li class="page-item ">
+                    <a href="@Url.Action("GetVehicles", "Vehicle", new { page = @ViewBag.PageIndex+1, IsMooveN = true })">next</a>
+                </li>
+            }
+
+        </ul>
+    </nav>
+</div>

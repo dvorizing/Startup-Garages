@@ -1,0 +1,150 @@
+﻿@model AbirProjectCars.ViewModel.GarageVisit
+
+<h2>Add GarageVisit</h2>
+@using (Html.BeginForm("Register", "GarageVisit", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(m => m.GarageID)
+    <div class="form-group">
+        @Html.LabelFor(m => m.VehicleID)
+        @Html.TextBoxFor(m => m.VehicleID, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.VehicleID)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.VisitDate)
+        @Html.TextBoxFor(m => m.VisitDate, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.VisitDate)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.OilVolume)
+        @Html.TextBoxFor(m => m.OilVolume, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.OilVolume)
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.OilType)
+        @Html.TextBoxFor(m => m.OilType, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.OilType)
+    </div>
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.TiresairCuttingAbrasive)
+        @Html.TextBoxFor(m => m.TiresairCuttingAbrasive, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.TiresairCuttingAbrasive)
+
+    </div><div class="form-group">
+        @Html.LabelFor(m => m.TiresairTireChange)
+        @Html.TextBoxFor(m => m.TiresairTireChange, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.TiresairTireChange)
+    </div>
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.BrakingFluidLevel)
+        @Html.TextBoxFor(m => m.BrakingFluidLevel, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.BrakingFluidLevel)
+
+    </div><div class="form-group">
+        @Html.LabelFor(m => m.BrakingBrakeWork)
+        @Html.TextBoxFor(m => m.BrakingBrakeWork, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.BrakingBrakeWork)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.BatteryFluidLevel)
+        @Html.TextBoxFor(m => m.BatteryFluidLevel, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.BatteryFluidLevel)
+
+    </div><div class="form-group">
+        @Html.LabelFor(m => m.BatteryConnections)
+        @Html.TextBoxFor(m => m.BatteryConnections, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.BatteryConnections)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ElectricaLlightBulbs)
+        @Html.TextBoxFor(m => m.ElectricaLlightBulbs, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ElectricaLlightBulbs)
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ElectricalSwitches)
+        @Html.TextBoxFor(m => m.ElectricalSwitches, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ElectricalSwitches)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ElectricalConnections)
+        @Html.TextBoxFor(m => m.ElectricalConnections, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ElectricalConnections)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.CoolingCoolant)
+        @Html.TextBoxFor(m => m.CoolingCoolant, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CoolingCoolant)
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.CoolingConnections)
+        @Html.TextBoxFor(m => m.CoolingConnections, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CoolingConnections)
+
+    </div>
+    
+<div class="form-group">
+    @Html.LabelFor(m => m.BracesFluidLevel)
+    @Html.TextBoxFor(m => m.BracesFluidLevel, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.BracesFluidLevel)
+
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(m => m.BracesConnections)
+    @Html.TextBoxFor(m => m.BracesConnections, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.BracesConnections)
+
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.ReplacementOilFilter)
+    @Html.TextBoxFor(m => m.ReplacementOilFilter, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.ReplacementOilFilter)
+
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.ReplacementAirFilter)
+    @Html.TextBoxFor(m => m.ReplacementAirFilter, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.ReplacementAirFilter)
+
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.ReplacementFuelFilter)
+    @Html.TextBoxFor(m => m.ReplacementFuelFilter, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.ReplacementFuelFilter)
+
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.TreatmentNote)
+    @Html.TextBoxFor(m => m.TreatmentNote, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.TreatmentNote)
+
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.Signiture)
+    @Html.TextBoxFor(m => m.Signiture, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Signiture)
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.TotalCost)
+    @Html.TextBoxFor(m => m.TotalCost, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.TotalCost)
+</div>
+<button type="submit" class="btn btn-primary">Register</button>
+}
+

@@ -1,0 +1,9 @@
+﻿@model AbirProjectCars.Models.Permissions
+
+<h2>Delete User</h2>
+<p>Are you sure you want to delete this Permission?</p>
+<form asp-action="Delete">
+    <input type="hidden" asp-for="PermissionID" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

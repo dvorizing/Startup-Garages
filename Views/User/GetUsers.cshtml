@@ -1,0 +1,89 @@
+﻿
+<h2>All Users</h2>
+
+<a href="@Url.Action("GetGarages", "Garage")">See All The Garages</a>
+<br />
+<a href="@Url.Action("AddUser", "User")">NewUesr</a>
+<br />
+<button class="btnToggleColumn" data-column="chkUserId" checked>Show/Hide UserID</button>
+<button class="btnToggleColumn" data-column="chkUsername" checked>Show/Hide Username</button>
+<button class="btnToggleColumn" data-column="chkPassword" checked>Show/Hide Password</button>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th class="columnToggle" data-column="chkUserId">UserID</th>
+            <th class="columnToggle" data-column="chkUsername">Username</th>
+            <th class="columnToggle" data-column="chkPassword">Password</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td class="columnToggle" data-column="chkUserId">@user.UserID</td>
+                <td class="columnToggle" data-column="chkUsername">@user.Username</td>
+                <td class="columnToggle" data-column="chkPassword">********</td>
+                <td>
+                    <a href="@Url.Action("Update", "User",new { id = @user.UserID })">Edit</a>
+                    <a href="@Url.Action("Delete", "User",new { id = @user.UserID })">Delete</a>
+                </td>
+                <td>
+                    <a href="@Url.Action("AddGarage", "Garage",new { id = @user.UserID })">AddGarage</a>
+                </td>
+                <td>
+                    <a href="@Url.Action("SeeGargePermission", "GaragePermission",new { id = @user.UserID })">GaragePermission</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Attach click event handler to the buttons
+        $('.btnToggleColumn').click(function () {
+            var columnId = $(this).data('column');
+
+            // Toggle the visibility of the title and column
+            $('th[data-column="' + columnId + '"]').toggle();
+            $('td[data-column="' + columnId + '"]').toggle();
+        });
+    });
+   
+  
+</script>
+
+<div>
+
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+
+            @if (ViewBag.LoopStartPage > 1)
+            {
+                <li class="page-item ">
+                    <a href="@Url.Action("GetUsers", "User", new { page = @ViewBag.PageIndex-1, IsMooveP = true })">prev</a>
+                </li>
+            }
+            @for (int page1 = ViewBag.LoopStartPage; page1 <= ViewBag.LoopEndPage; page1++)
+            {
+                <li class="page-item ">
+                    <a href="@Url.Action("GetUsers", "User", new { page = page1})">@page1</a>
+                </li>
+            }
+
+            @if (ViewBag.LoopEndPage < ViewBag.TotaPages)
+            {
+                <li class="page-item ">
+                    <a href="@Url.Action("GetUsers", "User", new { page = @ViewBag.PageIndex+1, IsMooveN = true })">next</a>
+                </li>
+            }
+
+        </ul>
+    </nav>
+</div>
+
+
+
